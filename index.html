@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html ng-app="demo">
+  <head>
+    <meta charset=utf-8 />
+    <title>angular listview</title>
+    <link rel="stylesheet" href="css/listview.css" media="screen" type="text/css">
+    <style>
+    .tag {
+      position: relative;
+      background-color: #DAE6F5;
+      display: inline-block;
+      margin: 5px;
+      padding: 0px 8px;
+      border-radius: 3px;
+      border: 1px solid #bbb;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="js/listview.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="DemoCtrl">
+      <div 
+           data-listview=""
+           data-template="listview.html"
+           data-items="items"
+           data-columns="thumb, title, date, filesize, dimension, tags"
+           data-methods="listview.methods">
+      </div>
+    </div>
+    <script type="text/ng-template" id="listview.html">
+      <div class="listview">
+        <table class="table">
+          <thead>
+            <tr>
+              <th ng-repeat="column in columns">{{column | capitalize}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in items" class="item">
+              <td ng-repeat="column in columns" class="column column-{{column}}" ng-include="getTemplate(column)"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </script>
+    <script type="text/ng-template" id="column-default.html">
+      {{_format(column,item)}}
+    </script>
+    <script type="text/ng-template" id="column-thumb.html">
+      <div class="thumb">
+        <img src="http://hkbuys.qiniudn.com/cover1.jpg" alt="">
+      </div>
+    </script>
+    <script type="text/ng-template" id="column-title.html">
+      <span>{{_format(column,item)}}</span>
+    </script>
+    <script type="text/ng-template" id="column-dimension.html">
+      <span>{{_format(column,item)}}</span>
+    </script>
+    <script type="text/ng-template" id="column-tags.html">
+      <div ng-repeat="tag in item[column]" class="tag">
+        <span>{{tag}}</span>
+      </div>
+    </script>
+  </body>
+</html>
