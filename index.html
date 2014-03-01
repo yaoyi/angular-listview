@@ -37,9 +37,18 @@
 
 <p>simple listview for angular.js</p>
 
+<p>it is useful when you have one data source, but needs to show several listviews which may has different styles, columns</p>
+
 <h2>
 <a name="sample" class="anchor" href="#sample"><span class="octicon octicon-link"></span></a>Sample</h2>
-
+<div ng-controller="DemoCtrl" class="demo">
+  <div
+      data-listview=""
+      data-items="items"
+      data-columns="title, date, filesize, dimension, tags"
+      data-methods="listview.methods">
+  </div>
+</div>
 <p>HTML:</p>
 
 <div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> 
@@ -64,6 +73,7 @@
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
     <script src="javascripts/listview.js"></script>
     <script src="javascripts/app.js"></script>
 
