@@ -59,15 +59,18 @@ div[data-listview] .item:hover {
     border: 1px solid #9CB9F7;
 }
 
-div[data-listview] .item .thumb {
-  position: relative;
-  border: 1px solid gray;
-  border-radius: 3px;
+div[data-listview] .item .thumb img {
   width: 30px;
   height: 30px;
 }
 
-div[data-listview] .item .thumb img {
+div[data-listview] .item .thumb {
+  position: relative;
+  border: 1px solid gray;
+  display: inline-block;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 3px;
   width: 30px;
   height: 30px;
 }
@@ -76,12 +79,11 @@ div[data-listview] .column-title {
   white-space: nowrap;
 }
 
-div[data-listview] .column-thumb {
-  width: 40px;
-}
-
 div[data-listview] .column-title span {
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 85%;
+  position: relative;
+  margin-left: 5px;
+  top: 2px;
 }

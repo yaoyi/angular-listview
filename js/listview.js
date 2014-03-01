@@ -2,7 +2,6 @@ angular.module('ui.listview', [])
 .directive("listview", ['$compile', '$interpolate','$templateCache', function($compile, $interpolate, $templateCache) {
   return {
     restrict: "EA",
-    replace: true,
     transclude: false,
     scope: {
       listviewId:"@listview",
@@ -24,11 +23,12 @@ angular.module('ui.listview', [])
       });
     },
     controller: function($scope, $interpolate, $compile, $templateCache){
+      $scope.predicate = 'title'
       $scope.getTemplate = function (column) {
-        var prefix = $scope.listviewId ? $scope.listviewId + '-' : '';
-        var template = prefix + 'column-' + column + '.html';
-        var html = $templateCache.get(template);
-        return html ? template : 'column-default.html';
+        var prefix = $scope.listviewId ? $scope.listviewId + '-' : ''
+        var template = prefix + 'column-' + column + '.html'
+        var html = $templateCache.get(template)
+        return html ? template : 'column-' + 'default.html'  
       }
       $scope._format = function(column, item){
         return this.methods && this.methods[column] 

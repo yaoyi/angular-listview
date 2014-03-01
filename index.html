@@ -5,6 +5,9 @@
     <title>angular listview</title>
     <link rel="stylesheet" href="css/listview.css" media="screen" type="text/css">
     <style>
+    body {
+      color: #444;
+    }
     .tag {
       position: relative;
       background-color: #DAE6F5;
@@ -25,44 +28,9 @@
            data-listview=""
            data-template="listview.html"
            data-items="items"
-           data-columns="thumb, title, date, filesize, dimension, tags"
+           data-columns="title, date, filesize, dimension, tags"
            data-methods="listview.methods">
       </div>
     </div>
-    <script type="text/ng-template" id="listview.html">
-      <div class="listview">
-        <table class="table">
-          <thead>
-            <tr>
-              <th ng-repeat="column in columns">{{column | capitalize}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="item in items" class="item">
-              <td ng-repeat="column in columns" class="column column-{{column}}" ng-include="getTemplate(column)"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </script>
-    <script type="text/ng-template" id="column-default.html">
-      {{_format(column,item)}}
-    </script>
-    <script type="text/ng-template" id="column-thumb.html">
-      <div class="thumb">
-        <img src="http://hkbuys.qiniudn.com/cover1.jpg" alt="">
-      </div>
-    </script>
-    <script type="text/ng-template" id="column-title.html">
-      <span>{{_format(column,item)}}</span>
-    </script>
-    <script type="text/ng-template" id="column-dimension.html">
-      <span>{{_format(column,item)}}</span>
-    </script>
-    <script type="text/ng-template" id="column-tags.html">
-      <div ng-repeat="tag in item[column]" class="tag">
-        <span>{{tag}}</span>
-      </div>
-    </script>
   </body>
 </html>

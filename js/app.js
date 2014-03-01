@@ -7,7 +7,8 @@
       filesize: "45678",
       width: "400",
       height: "600",
-      tags: ['wedding','travel']
+      tags: ['wedding','travel'],
+      thumb: 'cover1.jpg'
     },
     {
       title: "title2",
@@ -15,7 +16,8 @@
       filesize: "1567802",
       width: "300",
       height: "500",
-      tags: ['wedding']
+      tags: ['wedding'],
+      thumb: 'cover2.jpg'
     },
     {
       title: "title3",
@@ -23,7 +25,8 @@
       filesize: "4567822",
       width: "400",
       height: "500",
-      tags: ['travel', 'family']
+      tags: ['travel', 'family'],
+      thumb: 'cover3.jpg'
     }
   ]
   
@@ -62,11 +65,16 @@
       return ''
     }
   }
+
+  function thumb(item){
+    return "http://hkbuys.qiniudn.com/" + item.thumb
+  }
   
   $scope.listview = {}
   $scope.listview.methods = {
     date: formatDate,
     filesize: humanFileSize,
-    dimension: formatDimension
+    dimension: formatDimension,
+    thumb: thumb,
   }
 }]);
