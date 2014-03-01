@@ -25,7 +25,7 @@ var app = angular.module('demo', ['ui.listview'];
 
 The MIT License
 
-Copyright (c) 2013 blackgate, https://github.com/blackgate
+Copyright (c) 2013 yaoyi, https://github.com/yaoyi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
