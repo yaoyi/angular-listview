@@ -1,0 +1,87 @@
+div[data-listview] table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+div[data-listview] .table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+div[data-listview] .table th,
+div[data-listview] .table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+
+div[data-listview] .table th {
+  font-weight: bold;
+}
+
+div[data-listview] .table thead th {
+  vertical-align: bottom;
+}
+
+div[data-listview] .table caption + thead tr:first-child th,
+div[data-listview] .table caption + thead tr:first-child td,
+div[data-listview] .table colgroup + thead tr:first-child th,
+div[data-listview] .table colgroup + thead tr:first-child td,
+div[data-listview] .table thead:first-child tr:first-child th,
+div[data-listview] .table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+div[data-listview] .table tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
+div[data-listview] .table .table {
+  background-color: #ffffff;
+}
+
+div[data-listview] table th {
+  text-align: left;
+} 
+
+div[data-listview] .item {
+    border: 1px solid white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+div[data-listview] .item:hover {
+    background-color: #EFF7FF;
+    border: 1px solid #9CB9F7;
+}
+
+div[data-listview] .item .thumb {
+  position: relative;
+  border: 1px solid gray;
+  border-radius: 3px;
+  width: 30px;
+  height: 30px;
+}
+
+div[data-listview] .item .thumb img {
+  width: 30px;
+  height: 30px;
+}
+
+div[data-listview] .column-title {
+  white-space: nowrap;
+}
+
+div[data-listview] .column-thumb {
+  width: 40px;
+}
+
+div[data-listview] .column-title span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 85%;
+}
