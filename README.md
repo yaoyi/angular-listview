@@ -1,23 +1,159 @@
 Angular-listview
 ================
 
-simple listview for angular.js
+simple but flexible listview module for angular.js, it makes manage a listview with angular.js fairly easy
 
-## Sample
+## For example
 
-HTML:
+assume that you have a list of data:
+
+```javascript
+$scope.items = [
+    {
+      title: "title1",
+      date: new Date(),
+      filesize: "45678",
+      width: "400",
+      height: "600",
+      tags: ['wedding','travel'],
+      thumb: 'cover1.jpg'
+    },
+    {
+      title: "title2",
+      date: new Date(),
+      filesize: "1567802",
+      width: "300",
+      height: "500",
+      tags: ['wedding'],
+      thumb: 'cover2.jpg'
+    },
+    {
+      title: "title3",
+      date: new Date(),
+      filesize: "4567822",
+      width: "400",
+      height: "500",
+      tags: ['travel', 'family'],
+      thumb: 'cover3.jpg'
+    }
+  ]
+```
+
+you start with showing title/date/filesize, for some reason, you want to add width column to the listview,
+in this case you have to modify the listview template, even worse if multi listview instances required in one project, which may have different column needs, that would be troublesome. so let's keep it dry with this module
+
+### Basic Setup
+
+1.include files
+
+```html
+<link rel="stylesheet" href="css/listview.css" media="screen" type="text/css">
+<script src="js/listview.js"></script>
+```
+
+copy `listview-default.html` to `listview.html`
+
+2.add codes below
+
 ```html
 <div 
   data-listview=""
   data-items="items"
-  data-columns="title, date, filesize, dimension, tags"
+  data-columns="title, date, filesize">
+</div>
+```
+
+```javascript
+var app = angular.module('demo', ['ui.listview']);
+app.controller('DemoCtrl', ['$scope', function($scope){
+}])
+```
+
+then if needs width info, just change 
+
+```html
+<div 
+  data-listview=""
+  data-items="items"
+  data-columns="title, date, filesize">
+</div>
+```
+to 
+
+```html
+<div 
+  data-listview=""
+  data-items="items"
+  data-columns="title, date, filesize, width">
+</div>
+```
+
+### Customize Column
+
+the module allows you to customize the column by adding column templates and passing methods.
+
+#### custom methods for columns
+
+for example, use custom method to format the date column.
+
+1.add methods in your controller
+
+```javascript 
+function formatDate(dateStr) {
+    var datetime = new Date(dateStr);
+    var year = datetime.getFullYear();
+    var month = datetime.getMonth();
+    var date = datetime.getDate();
+    var hours = datetime.getHours();
+    var minutes = datetime.getMinutes();
+
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+
+    return date + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ampm;
+  }
+```
+
+2.add this method to $scope.listview
+
+```javascript
+  $scope.listview = {}
+  $scope.listview.methods = {
+    date: formatDate
+  }
+```
+
+3.pass listview.methods to module
+
+```html
+<div 
+  data-listview=""
+  data-items="items"
+  data-columns="title, date, filesize"
   data-methods="listview.methods">
 </div>
 ```
 
-Javascript:
-```javascript
-var app = angular.module('demo', ['ui.listview'];
+#### custom column style by adding templates to listview.html
+
+change color of date column to red
+
+```html
+<script type="text/ng-template" id="column-date.html">
+  <span style="color:red;">{{_format(column,item)}}</span>
+</script>
+```
+
+or change styles of tag column
+
+```html
+<script type="text/ng-template" id="column-tags.html">
+  <div ng-repeat="tag in item[column]" class="tag">
+    <span>{{tag}}</span>
+  </div>
+</script>
 ```
 
 
