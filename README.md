@@ -3,6 +3,8 @@ Angular-listview
 
 simple but flexible listview module for angular.js, it makes manage a listview with angular.js fairly easy
 
+check this http://codepen.io/yaoyi/pen/xbKAn to get the complete demo
+
 ## For example
 
 assume that you have a list of data:
