@@ -50,10 +50,9 @@ in this case you have to modify the listview template, even worse if multi listv
 
 ```html
 <link rel="stylesheet" href="css/listview.css" media="screen" type="text/css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
 <script src="js/listview.js"></script>
 ```
-
-copy `listview-default.html` to `listview.html`
 
 2.add codes below
 
